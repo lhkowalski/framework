@@ -48,8 +48,11 @@ abstract class Mapper
 	public function save($obj)
 	{
 		if($obj->{$this->$primary_key} != null)
-			$this->insert($obj)
+			$this->update($obj);
+		else
+			$this->insert($obj);
 
+		return $this;
 	}
 
 	/**
