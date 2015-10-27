@@ -7,7 +7,12 @@
         <title>Título do Documento</title>
     </head>
     <body>
-    <div>Tag para criar-se uma 'caixa', um bloco, mais utilizada com "Cascading Style Sheets
-         (Folhas de Estilo em Cascata)</div>
+        <h1>Sites Cadsatrados</h1>
+        <dl>
+        <?php foreach ($sites as $site): ?>
+        <dt><?php echo $site->nome; ?></dt>
+        <dd>Acessível em: /<?php echo $site->slug; ?></dd>
+        <?php endforeach; ?>
+        </dl>
     </body>
 </html>
