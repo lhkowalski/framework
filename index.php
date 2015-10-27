@@ -1,14 +1,14 @@
 <?php
 
 ini_set('allow_url_fopen', 'ON');
-error_reporting(~E_ALL & ~E_STRICT);
-//error_reporting(E_ALL);
+//error_reporting(~E_ALL & ~E_STRICT);
+error_reporting(E_ALL);
 
 define('ROOT_DIR', realpath(dirname(__FILE__)));
 define('CORE_DIR', ROOT_DIR.'/core');
 define('APPS_DIR', ROOT_DIR.'/site');
 
-if($_SERVER['HTTPS']) {
+if(isset($_SERVER['HTTPS']) and $_SERVER['HTTPS']) {
 	define('PROTOCOL', 'https');
 } else {
 	define('PROTOCOL', 'http');
