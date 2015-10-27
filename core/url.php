@@ -17,7 +17,9 @@ class URL
       else
       {
          if($is301)
+         {
             header('HTTP/1.1 301 Moved Permanently');
+         }
          header("Location: $url");
       }
       exit;
@@ -26,28 +28,35 @@ class URL
    {
       self::_parse_url();
       if(isset(self::$_segments[$index]))
+      {
          return self::$_segments[$index];
+      }
       else
+      {
          return $default;
+      }
    }
    public static function get()
    {
       if( ! isset(self::$_uri))
-         self::$_uri = isset($_GET['_r_']) ? $_GET['_r_'] : '';
+      {
+         self::$_uri = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
+      }
+
       return self::$_uri;
    }
    protected static function _parse_url()
    {
-      if(!is_array(self::$_segments))
+      if( ! is_array(self::$_segments))
       {
-         if(!isset(self::$_uri))
-            self::$_uri = $_GET['_r_'];
-         $partes          = explode('/', self::$_uri);
+         $partes = explode('/', self::get());
          self::$_segments = array();
          foreach($partes as $p)
          {
-            if(!empty($p))
+            if( ! empty($p))
+            {
                self::$_segments[] = $p;
+            }
          }
       }
    }

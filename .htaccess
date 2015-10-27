@@ -17,4 +17,5 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
 # Rewrite all other URLs to index.php?_r_=URL
-RewriteRule ^([^?]*) index.php?_r_=$1 [L,QSA]
+# RewriteRule ^([^?]*) index.php?_r_=$1 [L,QSA]
+RewriteRule ^([^?]*) index.php/$1 [L,QSA]

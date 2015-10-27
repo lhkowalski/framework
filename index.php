@@ -21,7 +21,6 @@ require_once(CORE_DIR.'/init.php');
 try
 {
    $rota = (new Router())->get();
-
    $controller = $rota['controller'];
    $action = $rota['action'];
 
