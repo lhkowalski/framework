@@ -6,7 +6,7 @@ error_reporting(E_ALL);
 
 define('ROOT_DIR', realpath(dirname(__FILE__)));
 define('CORE_DIR', ROOT_DIR.'/core');
-define('APPS_DIR', ROOT_DIR.'/site');
+define('APPS_DIR', ROOT_DIR.'/application');
 
 if(isset($_SERVER['HTTPS']) and $_SERVER['HTTPS']) {
 	define('PROTOCOL', 'https');
