@@ -3,10 +3,9 @@ class SiteController extends Controller
 {
    public function index()
    {
-      $template = new Template('views/index.php');
-
-      $template->sites = Site::find();
-
-      return $template;
+      $cliente = Cliente::load('id = ?', 1);
+      print_r($cliente);
+      echo "<hr>";
+      print_r($cliente->getSites()[0]->getCliente());
    }
 }
