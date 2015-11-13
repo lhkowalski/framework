@@ -49,7 +49,7 @@ class Resultado_Imagem
     */
    public function addTexto()
    {
-
+      
    }
 
    /*
@@ -57,7 +57,6 @@ class Resultado_Imagem
     */
    public function addRetangulo()
    {
-
    }
 
 
