@@ -1,5 +1,8 @@
 <?php
 
+/*
+ * Este é o front-controller da aplicação. Todos os códigos precisam passar por ele.
+ */
 ini_set('allow_url_fopen', 'ON');
 //error_reporting(~E_ALL & ~E_STRICT);
 error_reporting(E_ALL);
