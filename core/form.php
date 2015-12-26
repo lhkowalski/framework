@@ -82,7 +82,7 @@ EOT;
       return <<<EOT
 <div class="form-group">
    <label for="$nome">$label</label>
-   <textarea class="form-control $classe" id="$nome" name="$nome">$value</textarea>
+   <textarea rows="10" class="form-control $classe" id="$nome" name="$nome">$value</textarea>
 </div>
 EOT;
    }
