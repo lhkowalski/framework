@@ -181,6 +181,35 @@ abstract class ActiveRecord
 		return self::loadBySql($strSQL, $bindValues);
 	}
 
+	protected static function _buildCount($whereClause)
+	{
+		$strSQL = "select %s from %s %s";
+		$tableName = static::$_tableName;
+
+		if(empty(static::$_tablePrimaryKey))
+			throw new InvalidArgumentException("You must set the primary key name");
+
+		$strFields = "count(".static::$_tablePrimaryKey.") as total";
+
+		if($tableName === null or empty($tableName))
+			throw new InvalidArgumentException("You must set the table name");
+
+		$whereClause = $whereClause === null ? '' : 'where '.$whereClause;
+
+		return sprintf($strSQL, $strFields, $tableName, $whereClause);
+	}
+
+	public static function count($whereClause = null, $bindValues = null)
+	{
+		$strSQL = self::_buildCount($whereClause);
+
+		if($bindValues !== null and ! is_array($bindValues))
+			$bindValues = [$bindValues]; // transformar em array
+
+		$result = self::loadBySql($strSQL, $bindValues);
+		return $result->total;
+	}
+
 	/**
 	 * Executa uma SQL via PDO e retorna o statement resultante.
 	 */
