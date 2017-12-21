@@ -18,7 +18,7 @@ abstract class Controller
          throw new Exception("Invalid controller name...");
 
       $controller = ucfirst($controller);
-      $classe = $controller.'_Controller';
+      $classe = 'Controller_' . $controller;
       //$classe = $controller.'Controller';
 
       if(class_exists($classe))

@@ -1,6 +1,6 @@
 <?php
 
-class SiteController extends Controller
+class Controller_Site extends Controller
 {
    public function index()
    {
