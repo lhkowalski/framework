@@ -2,15 +2,22 @@
 
 class Config
 {
-	
-	static $config = array(
-     'db_user' => 'root',
-     'db_pass' => '',
-     'db_dsn' => 'mysql:host=127.0.0.1;port=3306;dbname=multisite',     
-   );
-
    static function get($key = '', $padrao = '')
    {
-      return isset(self::$config[$key]) ? self::$config[$key] : $padrao;
+      $config = array();
+      $config['development'] = array(
+        'db_user' => 'root',
+        'db_pass' => '',
+        'db_dsn' => 'mysql:host=127.0.0.1;port=3306;dbname=appperguntador;charset=utf8',     
+      );
+      $config['production'] = array(
+        'db_user' => 'root',
+        'db_pass' => '',
+        'db_dsn' => 'mysql:host=127.0.0.1;port=3306;dbname=appperguntador;charset=utf8',     
+      );
+
+      $env = defined('APP_ENV') ? defined('APP_ENV') : 'development';
+
+      return isset(self::$config[$env][$key]) ? self::$config[$env][$key] : $padrao;
    }
 }

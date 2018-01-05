@@ -12,6 +12,15 @@ define('CORE_DIR', ROOT_DIR.'/core');
 define('APPS_DIR', ROOT_DIR.'/application');
 define('LIBS_DIR', ROOT_DIR.'/libraries');
 
+if(getenv('development'))
+{
+	define('APP_ENV', 'development');
+}
+else
+{
+	define('APP_ENV', 'production');
+}
+
 if(isset($_SERVER['HTTPS']) and $_SERVER['HTTPS']) {
 	define('PROTOCOL', 'https');
 } else {
