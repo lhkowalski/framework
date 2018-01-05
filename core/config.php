@@ -16,7 +16,7 @@ class Config
         'db_dsn' => 'mysql:host=127.0.0.1;port=3306;dbname=appperguntador;charset=utf8',     
       );
 
-      $env = defined('APP_ENV') ? defined('APP_ENV') : 'development';
+      $env = defined('APP_ENV') ? APP_ENV : 'development';
 
       return isset($config[$env][$key]) ? $config[$env][$key] : $padrao;
    }
