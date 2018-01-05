@@ -18,6 +18,6 @@ class Config
 
       $env = defined('APP_ENV') ? defined('APP_ENV') : 'development';
 
-      return isset(self::$config[$env][$key]) ? self::$config[$env][$key] : $padrao;
+      return isset($config[$env][$key]) ? $config[$env][$key] : $padrao;
    }
 }
