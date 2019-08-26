@@ -19,7 +19,6 @@ abstract class Controller
 
       $controller = ucfirst($controller);
       $classe = 'Controller_' . $controller;
-      //$classe = $controller.'Controller';
 
       if(class_exists($classe))
       {

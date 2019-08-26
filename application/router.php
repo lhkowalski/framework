@@ -1,22 +1,7 @@
 <?php
-class Router
+
+class Router extends CoreRouter
 {
-   var $rota;
-
-   public function __construct()
-   {
-      $this->rota = array();
-   }
-
-   public function controller()
-   {
-      return $this->rota['controller'];
-   }
-   public function action()
-   {
-      return $this->rota['action'];
-   }
-
    public function get()
    {
       if (URL::get() == "")
@@ -25,7 +10,7 @@ class Router
       }
       else
       {
-         $this->rota = ['controller' => 'Site', 'action' => 'outro'];
+         $this->_autoRoutes();
       }
 
       return $this->rota;
