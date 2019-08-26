@@ -1,5 +1,9 @@
 {
-    "name": "lhkowalski/framework",
-    "description": "Estrutura básica de código para novos projetos, em PHP",
-    "require": {}
+   "name": "lhkowalski/framework",
+   "description": "Estrutura básica de código para novos projetos, em PHP",
+   "require": {
+      "robmorgan/phinx": "^0.10.8"
+   },
+   "require-dev": {
+   }
 }
