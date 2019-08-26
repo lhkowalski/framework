@@ -1,0 +1,5 @@
+{
+    "name": "lhkowalski/framework",
+    "description": "Estrutura básica de código para novos projetos, em PHP",
+    "require": {}
+}
