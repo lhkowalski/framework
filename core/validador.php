@@ -1,122 +1,82 @@
 <?php
 
 class Validador
-{
-	protected $mensagemPadrao = 'Problema de validaçao. Por favor, digite todos os dados corretamente.';
-	
-	public function isNumeroNaoVazio($valor, $mensagem = false)
+{	
+	public function isNumeroNaoVazio($valor)
 	{
-		$this->isNaoVazio($valor, $mensagem);
-		$this->isNumero($valor, $mensagem);
+		return $this->isNaoVazio($valor) && $this->isNumero($valor);
 	}
 	
-	public function isNumeroNaoZero($valor, $mensagem = false)
+	public function isNumeroNaoZero($valor)
 	{
-		$this->isNumero($valor, $mensagem);
-		if($valor == 0)
-		{
-			throw new Exception($mensagem ? $mensagem : $this->mensagemPadrao);
-		}
+		return $this->isNumero($valor) && $valor != 0;
 	}
 
-	public function hasFaixaComprimento($valor, $tamanhoMinimo = 1, $tamanhoMaximo = 1000, $mensagem = false)
+	public function hasFaixaComprimento($valor, $tamanhoMinimo = 1, $tamanhoMaximo = 1000)
 	{
-		$this->hasComprimentoMinimo($valor, $tamanhoMinimo, $mensagem);
-		$this->hasComprimentoMaximo($valor, $tamanhoMaximo, $mensagem);
+		return $this->hasComprimentoMinimo($valor, $tamanhoMinimo) &&
+			$this->hasComprimentoMaximo($valor, $tamanhoMaximo);
 	}
 	
-	public function isStringNaoVazia($valor, $mensagem = false)
+	public function isStringNaoVazia($valor)
 	{
-		$this->isNaoVazio($valor, $mensagem);
-		$this->isString($valor, $mensagem);
+		return $this->isNaoVazio($valor) && 
+			$this->isString($valor);
 	}
 	
-	public function isNumero($valor, $mensagem = false)
+	public function isNumero($valor)
 	{
-		if( ! is_numeric($valor))
-		{
-			throw new Exception($mensagem ? $mensagem : $this->mensagemPadrao);
-		}
+		return is_numeric($valor);
 	}
 	
-	public function isString($valor, $mensagem = false)
+	public function isString($valor)
 	{
-		if( ! is_string($valor))
-		{
-			throw new Exception($mensagem ? $mensagem : $this->mensagemPadrao);
-		}
+		return is_string($valor);
 	}
 
-	public function hasComprimentoExato($valor, $tamanho, $mensagem = false)
+	public function hasComprimentoExato($valor, $tamanho)
 	{
-		if(strlen($valor) != intval($tamanho))
-		{
-			throw new Exception($mensagem ? $mensagem : $this->mensagemPadrao);
-		}		
+		return strlen($valor) === intval($tamanho);
 	}
 	
-	public function hasComprimentoMinimo($valor, $tamanho, $mensagem = false)
+	public function hasComprimentoMinimo($valor, $tamanho)
 	{
-		if(strlen($valor) < intval($tamanho))
-		{
-			throw new Exception($mensagem ? $mensagem : $this->mensagemPadrao);
-		}		
+		return strlen($valor) >= intval($tamanho);		
 	}
 	
-	public function hasComprimentoMaximo($valor, $tamanho, $mensagem = false)
+	public function hasComprimentoMaximo($valor, $tamanho)
 	{
-		if(strlen($valor) > intval($tamanho))
-		{
-			throw new Exception($mensagem ? $mensagem : $this->mensagemPadrao);
-		}		
+		return strlen($valor) <= intval($tamanho);
 	}
 	
-	public function isNaoVazio($valor, $mensagem = false)
+	public function isNaoVazio($valor)
 	{
-		if(empty($valor))
-		{
-			throw new Exception($mensagem ? $mensagem : $this->mensagemPadrao);
-		}
+		return ! empty($valor);
 	}
 	
-	public function hasPadraoRegex($valor, $padrao, $mensagem = false)
+	public function hasPadraoRegex($valor, $padrao)
 	{
-		if( ! preg_match($padrao, $valor))
-		{
-			throw new Exception($mensagem ? $mensagem : $this->mensagemPadrao);
-		}		
+		return preg_match($padrao, $valor);
 	}
 	
-	public function isData($valor, $mensagem = false)
+	public function isData($valor)
 	{
 		$temp = explode('-', $valor);
-		if(count($temp) != 3 or ! checkdate($temp[1], $temp[2], $temp[0]))
-		{
-			throw new Exception($mensagem ? $mensagem : $this->mensagemPadrao);
-		}
+		return (count($temp) === 3 and checkdate($temp[1], $temp[2], $temp[0]));
 	}
 	
-	public function isEnum($valor, $valoresValidos, $mensagem = false)
+	public function isEnum($valor, $valoresValidos)
 	{
-		if( ! is_array($valoresValidos) or ! in_array($valor, $valoresValidos))
-		{
-			throw new Exception($mensagem ? $mensagem : $this->mensagemPadrao);
-		}
+		return (is_array($valoresValidos) and in_array($valor, $valoresValidos));
 	}
 
-	public function isEmail($valor, $mensagem = false);
+	public function isEmail($valor)
 	{
-      if(filter_var($email, FILTER_VALIDATE_EMAIL) === FALSE)
-		{
-			throw new Exception($mensagem ? $mensagem : $this->mensagemPadrao);
-		}
+      return filter_var($valor, FILTER_VALIDATE_EMAIL) !== FALSE;
 	}
 
-	public function isIgual($primeiroValor, $segundoValor, $mensagem = false);
+	public function isIgual($primeiroValor, $segundoValor)
 	{
-      if($primeiroValor !== $segundoValor)
-		{
-			throw new Exception($mensagem ? $mensagem : $this->mensagemPadrao);
-		}
+      return $primeiroValor !== $segundoValor;
 	}
 }
