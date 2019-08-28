@@ -1,6 +1,7 @@
 {
    "name": "lhkowalski/framework",
    "description": "Estrutura básica de código para novos projetos, em PHP",
+   "license": "MIT",
    "require": {
    	"symfony/console": "4.3.0",
       "robmorgan/phinx": "0.10.8"
