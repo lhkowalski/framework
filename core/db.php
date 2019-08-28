@@ -13,9 +13,9 @@ class DB
 			{
 				try
 				{
-					self::$_pdo = new PDO(Config::get('db_dsn'), 
-										Config::get('db_user'),
-										Config::get('db_pass'));
+					self::$_pdo = new PDO(Config::get('DB_DSN'), 
+										Config::get('DB_USER'),
+										Config::get('DB_PASS'));
 
 					self::$_pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 					self::$_pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -25,6 +25,7 @@ class DB
 					throw new Exception('Cannot create database conection. Message: '.$e->getMessage());
 				}
 			}
+
 			return self::$_pdo;
 		}
    }

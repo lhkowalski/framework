@@ -12,24 +12,21 @@ define('CORE_DIR', ROOT_DIR.'/core');
 define('APPS_DIR', ROOT_DIR.'/application');
 define('LIBS_DIR', ROOT_DIR.'/libraries');
 
-if(getenv('development'))
+require_once(CORE_DIR.'/init.php');
+
+// load settings
+Config::load();
+
+if(isset($_SERVER['HTTPS']) and $_SERVER['HTTPS']) 
 {
-	define('APP_ENV', 'development');
-}
+	define('PROTOCOL', 'https');
+} 
 else
 {
-	define('APP_ENV', 'production');
-}
-
-if(isset($_SERVER['HTTPS']) and $_SERVER['HTTPS']) {
-	define('PROTOCOL', 'https');
-} else {
 	define('PROTOCOL', 'http');
 }
 
-define('ROOT_URL', PROTOCOL . '://framework');
-
-require_once(CORE_DIR.'/init.php');
+define('ROOT_URL', PROTOCOL . '://' . Config::get('ROOT_URL', 'localhost'));
 
 try
 {
