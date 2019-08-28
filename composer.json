@@ -2,7 +2,8 @@
    "name": "lhkowalski/framework",
    "description": "Estrutura básica de código para novos projetos, em PHP",
    "require": {
-      "robmorgan/phinx": "^0.10.8"
+   	"symfony/console": "4.3.0",
+      "robmorgan/phinx": "0.10.8"
    },
    "require-dev": {
    }
