@@ -23,6 +23,21 @@ class Request
       return $this->_content;
    }
 
+   public function jsonContent()
+   {
+      $content = $this->content();
+      $jsonContent = json_decode($content);
+
+      if(json_last_error() === JSON_ERROR_NONE)
+      {
+         return $jsonContent;
+      }
+      else
+      {
+         null;
+      }
+   }
+
    public function method()
    {  
       return $this->_method;
