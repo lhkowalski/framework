@@ -1,17 +1,18 @@
 <?php
 
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\JsonResponse;
 
-class Controller_Default extends Controller
+class Controller_Default extends JSONController
 {
    public function index()
    {
-   	$param = $this->request->query->get('name');
-      $this->response = new JsonResponse(['req' => $param]);
+   	$data = $this->request->request->all();
+   	
+   	$usuario = ['nome' => "Luiz Kowalski"];
 
       $this->response
-	      ->setStatusCode(Response::HTTP_NOT_FOUND)
+      	->setData($usuario)
+	      ->setStatusCode(Response::HTTP_OK)
 	      ->send();
    }
 }
