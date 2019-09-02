@@ -13,6 +13,7 @@ define('APPS_DIR', ROOT_DIR.'/application');
 define('LIBS_DIR', ROOT_DIR.'/libraries');
 
 require_once(CORE_DIR.'/init.php');
+require_once(ROOT_DIR.'/vendor/autoload.php');
 
 // load settings
 Config::load();
