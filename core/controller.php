@@ -1,5 +1,8 @@
 <?php
 
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+
 /*
  * O básico dos controllers
  */
@@ -9,7 +12,7 @@ abstract class Controller
 
    public function __construct()
    {
-      $this->request = new Request();
+      $this->request = Request::createFromGlobals();
       $this->response = new Response();
    }
 
