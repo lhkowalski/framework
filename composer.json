@@ -6,6 +6,9 @@
    	"symfony/console": "4.3.0",
       "robmorgan/phinx": "0.10.8"
    },
+   "suggest": {
+   	"lhkowalski/geradormvc": "Proporciona uma maneira fácil de gerar as classes dos módulos que você quer criar"
+   },
    "require-dev": {
    }
 }
