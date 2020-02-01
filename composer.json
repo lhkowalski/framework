@@ -1,16 +1,5 @@
 {
    "name": "lhkowalski/framework",
    "description": "Estrutura básica de código para novos projetos, em PHP",
-   "license": "MIT",
-   "require": {
-   	"symfony/console": "4.3.0",
-      "robmorgan/phinx": "0.10.8",
-      "respect/validation": "^1.1",
-      "symfony/http-foundation": "^4.3"
-   },
-   "suggest": {
-   	"lhkowalski/geradormvc": "Proporciona uma maneira fácil de gerar as classes dos módulos que você quer criar"
-   },
-   "require-dev": {
-   }
+   "license": "MIT"
 }
