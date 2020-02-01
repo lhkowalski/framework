@@ -38,7 +38,7 @@ try
    $theController = Controller::factory($controller);
 
    if( ! method_exists($theController, $action))
-   	throw new Exception("The action '$action' is invalid", 404);
+      throw new Exception("The action '$action' is invalid", 404);
 
 	echo $theController->$action();
 }
