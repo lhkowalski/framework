@@ -38,16 +38,19 @@ try
    $theController = Controller::factory($controller);
 
    if( ! method_exists($theController, $action))
-      throw new Exception("The action '$action' is invalid", 404);
+      throw new Exception("The action '$action' is invalid");
 
-	echo $theController->$action();
+   $response = $theController->$action();
+
+   if( ! $response instanceof ShowableResponse)
+   {
+      $response = new HtmlResponse($response);
+   }
+
+   $response->show();
 }
 catch(Exception $e)
 {
-	if($e->getCode() == 404)
-	{
-		header("HTTP/1.0 404 Not Found");
-	}
-
-	echo "<h1>".$e->getMessage()."</h1>";
+   $response = new HtmlResponse("<h1>".$e->getMessage()."</h1>", 500);
+	$response->show();
 }
