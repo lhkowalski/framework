@@ -106,6 +106,19 @@ abstract class ActiveRecord
 		return self::updateBySql($strSQL, $arrayData);
 	}
 
+	protected static function _buildWhereClause($whereClause = null)
+	{
+		if($whereClause === null)
+			return '';
+
+		$whereClause = trim($whereClause);
+
+		if(strtolower(substr($whereClause, 0, 5)) == 'order')
+			return $whereClause;
+
+		return 'where '.$whereClause;
+	}
+
 	protected static function _buildDelete($whereClause = null)
 	{
 		$strSQL = "delete from %s %s";
@@ -114,7 +127,7 @@ abstract class ActiveRecord
 		if($tableName === null or empty($tableName))
 			throw new InvalidArgumentException("You must set the table name");
 
-		$whereClause = $whereClause === null ? '' : 'where '.$whereClause;
+		$whereClause = self::_buildWhereClause($whereClause);
 
 		return sprintf($strSQL, $tableName, $whereClause);
 	}
@@ -156,7 +169,7 @@ abstract class ActiveRecord
 		if($tableName === null or empty($tableName))
 			throw new InvalidArgumentException("You must set the table name");
 
-		$whereClause = $whereClause === null ? '' : 'where '.$whereClause;
+		$whereClause = self::_buildWhereClause($whereClause);
 
 		return sprintf($strSQL, $strFields, $tableName, $whereClause);
 	}
@@ -194,7 +207,7 @@ abstract class ActiveRecord
 		if($tableName === null or empty($tableName))
 			throw new InvalidArgumentException("You must set the table name");
 
-		$whereClause = $whereClause === null ? '' : 'where '.$whereClause;
+		$whereClause = self::_buildWhereClause($whereClause);
 
 		return sprintf($strSQL, $strFields, $tableName, $whereClause);
 	}
